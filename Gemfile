@@ -27,6 +27,7 @@ gem 'forecast_io'
 gem 'geocoder'
 gem 'rest-client'
 gem 'dotenv-rails'
+gem 'rspotify'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

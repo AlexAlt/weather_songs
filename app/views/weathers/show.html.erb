@@ -2,4 +2,10 @@
 <h2><%= @weather.response['temperature']%></h2>
 <h3><%= @weather.response['summary']%></h3>
 
+<% if @weather.response['temperature'].to_f > 78 %>
+  <iframe src="https://embed.spotify.com/?uri=spotify:user:myplay.com:playlist:6j2ZnN1A2xcWQMELm6hcdI" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% else %>
+  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:16BpjqQV1Ey0HeDueNDSYz" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
+
 <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=10&center=<%= @weather.latitude %>,<%= @weather.longitude %>&key=AIzaSyDoLWuKQi_clGkldnXujg_9vh_WCowG48k" allowfullscreen></iframe>
