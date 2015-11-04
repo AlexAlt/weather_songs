@@ -1,3 +1,5 @@
 <h1><%= @weather.address %></h1>
 <h2><%= @weather.response['temperature']%></h2>
 <h3><%= @weather.response['summary']%></h3>
+
+<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=10&center=<%= @weather.latitude %>,<%= @weather.longitude %>&key=AIzaSyDoLWuKQi_clGkldnXujg_9vh_WCowG48k" allowfullscreen></iframe>
