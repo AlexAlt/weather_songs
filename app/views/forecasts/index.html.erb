@@ -1,9 +1,0 @@
-<h1>Weather Songs</h1>
-
-<% if @forecasts.any? %>
-  <%= @forecasts.each do |forecast| %>
-    <p><%= link_to forecast.location, forecast %></p>
-  <% end %>
-<% end %>
-
-<%= @forecast.latitude %>

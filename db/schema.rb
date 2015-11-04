@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103235619) do
+ActiveRecord::Schema.define(version: 20151104182224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
-  create_table "forecasts", force: :cascade do |t|
-    t.string   "location"
+  create_table "weathers", force: :cascade do |t|
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "response",   default: {}, null: false
   end
 
 end

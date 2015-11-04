@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'forecasts#index'
-  resources :forecasts
+  root 'weathers#index'
+  resources :weathers
 end
