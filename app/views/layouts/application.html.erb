@@ -5,10 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Delius+Unicase' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa:300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="container">
-    <%= yield %>
-  </div>
+  <!-- <div class="container"> -->
+    <div class="col-md-3">
+      <a href="/"><%= image_tag "logo.png", class: 'img-responsive main-logo' %></a>
+      <hr>
+      <div class="menu">
+        <h3>Get a custom Spotify playlist based on the current weather of a location of your choice!</h3>
+        <br>
+        <h2>New Forecast:</h2>
+        <%= form_for @weather do |f| %>
+          <%= f.text_field :address, class: "form-control", placeholder: "Location" %>
+          <br>
+          <%= f.submit "Tune it!" %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+        <p>&copy; 2015 Alex Altieri & Leah Klamkin </p>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <%= yield %>
+    </div>
+  <!-- </div> -->
 </body>
 </html>

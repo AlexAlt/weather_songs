@@ -1,11 +1,42 @@
-<h1><%= @weather.address %></h1>
-<h2><%= @weather.response['temperature']%></h2>
-<h3><%= @weather.response['summary']%></h3>
+<center>
+<div class="col-md-6">
+<h1>Here's some music we think you'll enjoy:</h1>
+  <% if @weather.response['temperature'].to_f >= 78 %>
+    <% if @weather.response['summary'].split(" ").include?("Clear") %>
+      <%= render 'playlists/on_fleek' %>
+    <% elsif @weather.response['summary'].split(" ").include?("Cloudy") %>
+      <%= render 'playlists/indie_chillout' %>
+    <% else @weather.response['summary'].split(" ").include?("Rain") %>
+      <%= render 'playlists/deep_house_relax' %>
+    <% end %>
 
-<% if @weather.response['temperature'].to_f > 78 %>
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:myplay.com:playlist:6j2ZnN1A2xcWQMELm6hcdI" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-<% else %>
-  <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:16BpjqQV1Ey0HeDueNDSYz" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-<% end %>
+  <% elsif @weather.response['temperature'].to_f.between?(60, 78) %>
+    <% if @weather.response['summary'].split(" ").include?("Clear") %>
+      <%= render 'playlists/indie_pop' %>
+    <% elsif @weather.response['summary'].split(" ").include?("Cloudy") %>
+      <%= render 'playlists/afternoon_acoustic' %>
+    <% else @weather.response['summary'].split(" ").include?("Rain") %>
+      <%= render 'playlists/rainy_day' %>
+    <% end %>
 
-<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=10&center=<%= @weather.latitude %>,<%= @weather.longitude %>&key=AIzaSyDoLWuKQi_clGkldnXujg_9vh_WCowG48k" allowfullscreen></iframe>
+  <% else @weather.response['temperature'].to_f < 60 %>
+    <% if @weather.response['summary'].split(" ").include?("Clear") %>
+      <%= render 'playlists/happy_hipster' %>
+    <% elsif @weather.response['summary'].split(" ").include?("Cloudy") %>
+      <%= render 'playlists/autumn_leaves' %>
+    <% else @weather.response['summary'].split(" ").include?("Rain") %>
+      <%= render 'playlists/coffee_table_jazz' %>
+    <% end %>
+  <% end %>
+</div>
+
+
+<div class="col-md-6 jumbotron">
+    <h1><%= @weather.address %></h1>
+    <h4>Weather <%= @weather.created_at.strftime("at %I:%M%p on %m/%d/%Y") %></h4>
+    <h2><%= @weather.response['temperature']%>° F</h2>
+    <h2><%= @weather.response['summary']%></h2>
+    <iframe width="400" height="300" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/search?q=<%= @weather.address %>&key=AIzaSyDoLWuKQi_clGkldnXujg_9vh_WCowG48k" allowfullscreen></iframe>
+
+</div>
